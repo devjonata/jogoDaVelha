@@ -46,5 +46,18 @@ public class Velha {
 		}
 		return jogador;
 	}
+	
+	public boolean VerificarPosicao(String posicao) {
+		for (int i=0; i<jogo.length; i++) {
+			for (int j=0; j<jogo[i].length; j++) {
+				if (posicao.equals("X") || posicao.equals("O")) {
+					return false;
+				} else {
+					jogo[i][j] = posicao;
+				}
+			}
+		}
+		return true;
+	}
 
 }
