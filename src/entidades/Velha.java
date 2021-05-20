@@ -5,6 +5,7 @@ public class Velha {
 	private String[][] jogo = {{"1", "2", "3"}, {"4", "5", "6"}, {"7", "8", "9"}};
 	
 	public void Mostrar() {
+		System.out.println("=============");
 		System.out.println("JOGO DA VELHA");
 		System.out.println("+---+---+---+");
 		for (int i=0; i<jogo.length; i++) {
@@ -48,19 +49,17 @@ public class Velha {
 	}
 	
 	public boolean VerificarPosicao(String posicao) {
-		for (int i=0; i<jogo.length; i++) {
-			for (int j=0; j<jogo[i].length; j++) {
-				if (posicao.equals("X") || posicao.equals("O")) {
+		for (int i=0; i<3; i++) {
+			for (int j=0; j<3; j++) {
+				if (jogo[i][j].equals(posicao)) {
 					return false;
-				} else {
-					jogo[i][j] = posicao;
 				}
 			}
 		}
 		return true;
 	}
 	
-	public String VerificarGanhador() {
+	public String VerificarGanhador(int jogadas) {
 		String[] vet = new String[8];
 		String vencedor = null;
 		
@@ -72,15 +71,19 @@ public class Velha {
 		vet[4] = jogo[0][1] + jogo[1][1] + jogo[2][1];
 		vet[5] = jogo[0][2] + jogo[1][2] + jogo[2][2];
 		
-		vet[6] = jogo[0][0] + jogo[1][1] + jogo[1][2];
+		vet[6] = jogo[0][0] + jogo[1][1] + jogo[2][2];
 		vet[7] = jogo[0][2] + jogo[1][1] + jogo[2][0];
 		
-		for (int i=0; i<vet.length; i++) {
-			if (vet[i].equals("XXX")) {
-				vencedor = "JOGADOR X";
-			} else if (vet[i].equals("OOO")) {
-				vencedor = "JOGADOR O";
+		if (jogadas <= 8) {
+			for (int i=0; i<vet.length; i++) {
+				if (vet[i].equals("XXX")) {
+					vencedor = "O JOGADOR X";
+				} else if (vet[i].equals("OOO")) {
+					vencedor = "O JOGADOR O";
+				}
 			}
+		} else {
+			vencedor = "O JOGO DEU VELHA";
 		}
 		return vencedor;
 	}
