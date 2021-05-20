@@ -14,5 +14,27 @@ public class Velha {
 			System.out.printf("|%n+---+---+---+%n");
 		}
 	}
+	
+	public void MudarPosicao(String posicao, String jogador) {
+		if (posicao.equals("1")) {
+			jogo[0][0] = jogador;
+		} else if (posicao.equals("2")) {
+			jogo[0][1] = jogador;
+		} else if (posicao.equals("3")) {
+			jogo[0][2] = jogador;
+		} else if (posicao.equals("4")) {
+			jogo[1][0] = jogador;
+		} else if (posicao.equals("5")) {
+			jogo[1][1] = jogador;
+		} else if (posicao.equals("6")) {
+			jogo[1][2] = jogador;
+		} else if (posicao.equals("7")) {
+			jogo[2][0] = jogador;
+		} else if (posicao.equals("8")) {
+			jogo[2][1] = jogador;
+		} else if (posicao.equals("9")) {
+			jogo[2][2] = jogador;
+		}
+	}
 
 }
