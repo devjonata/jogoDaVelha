@@ -1,10 +1,14 @@
 package aplicacao;
 
+import entidades.Velha;
+
 public class Programa {
 
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
-
+		Velha v = new Velha();
+		
+		v.Mostrar();
+		
 	}
 
 }
