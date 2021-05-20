@@ -59,5 +59,30 @@ public class Velha {
 		}
 		return true;
 	}
+	
+	public String VerificarGanhador() {
+		String[] vet = new String[8];
+		String vencedor = null;
+		
+		vet[0] = jogo[0][0] + jogo[0][1] + jogo[0][2];
+		vet[1] = jogo[1][0] + jogo[1][1] + jogo[1][2];
+		vet[2] = jogo[2][0] + jogo[2][1] + jogo[2][2];
+		
+		vet[3] = jogo[0][0] + jogo[1][0] + jogo[2][0];
+		vet[4] = jogo[0][1] + jogo[1][1] + jogo[2][1];
+		vet[5] = jogo[0][2] + jogo[1][2] + jogo[2][2];
+		
+		vet[6] = jogo[0][0] + jogo[1][1] + jogo[1][2];
+		vet[7] = jogo[0][2] + jogo[1][1] + jogo[2][0];
+		
+		for (int i=0; i<vet.length; i++) {
+			if (vet[i].equals("XXX")) {
+				vencedor = "JOGADOR X";
+			} else if (vet[i].equals("OOO")) {
+				vencedor = "JOGADOR O";
+			}
+		}
+		return vencedor;
+	}
 
 }
