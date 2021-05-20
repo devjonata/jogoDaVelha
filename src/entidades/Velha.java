@@ -36,5 +36,15 @@ public class Velha {
 			jogo[2][2] = jogador;
 		}
 	}
+	
+	public String TrocarJogador(int jogadas) {
+		String jogador;
+		if (jogadas%2 == 0) {
+			jogador = "X";
+		} else {
+			jogador = "O";
+		}
+		return jogador;
+	}
 
 }
