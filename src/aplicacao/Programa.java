@@ -1,7 +1,7 @@
 package aplicacao;
 
-import java.time.Duration;
-import java.time.Instant;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.Scanner;
 
 import entidades.Velha;
@@ -14,46 +14,48 @@ public class Programa {
 		int jogadas = 0;
 		String posicao;
 		int jogadasX = 0, jogadasO = 0;
-		v.Mostrar();
+		v.mostrar();
 		long tempoInicial = System.currentTimeMillis();
+		SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
+		Date momento = new Date();
 		
 		do {
-			System.out.print("Informe uma posicao para " + v.TrocarJogador(jogadas) + ": ");
+			System.out.print("Informe uma posicao para " + v.trocarJogador(jogadas) + ": ");
 			posicao = sc.next();
-			v.VerificarPosicao(posicao);
+			v.verificarPosicao(posicao);
 			
 			do {
-				if (v.VerificarPosicao(posicao)) {
+				if (v.verificarPosicao(posicao)) {
 					System.out.println("Posicao invalida, tente novamente: ");
-					System.out.print("Informe uma posicao para " + v.TrocarJogador(jogadas) + ": ");
+					System.out.print("Informe uma posicao para " + v.trocarJogador(jogadas) + ": ");
 					posicao = sc.next();
 				}
-			}while(v.VerificarPosicao(posicao));
+			}while(v.verificarPosicao(posicao));
 			
-			if (v.TrocarJogador(jogadas).equals("X")) {
+			if (v.trocarJogador(jogadas).equals("X")) {
 				jogadasX++;
-			} else if(v.TrocarJogador(jogadas).equals("O")) {
+			} else if(v.trocarJogador(jogadas).equals("O")) {
 				jogadasO++;
 			}
 			
-			v.MudarPosicao(posicao, v.TrocarJogador(jogadas));
+			v.mudarPosicao(posicao, v.trocarJogador(jogadas));
 			jogadas++;
-			v.VerificarGanhador(jogadas);	
-			v.Mostrar();
+			v.verificarGanhador(jogadas);	
+			v.mostrar();
 			
-		}while(v.VerificarGanhador(jogadas) == null);
+		}while(v.verificarGanhador(jogadas) == null);
 		long tempoTotal = System.currentTimeMillis() - tempoInicial;
 		
-		if (v.VerificarGanhador(jogadas).equals("O JOGO DEU VELHA")) {
-			System.out.println(v.VerificarGanhador(jogadas));
+		if (v.verificarGanhador(jogadas).equals("O JOGO DEU VELHA")) {
+			System.out.println(v.verificarGanhador(jogadas));
 		} else {
-			System.out.println(v.VerificarGanhador(jogadas) + " É O VENCEDOR !!!");
+			System.out.println(v.verificarGanhador(jogadas) + " É O VENCEDOR !!!");
 		}
 		
 		System.out.println();
 		System.out.println("Dados do jogo");
 		System.out.println();
-		
+		System.out.println("Data do jogo: " + sdf.format(momento));
 		if (tempoTotal/1000 > 60) {
 			long minutos = (tempoTotal/1000)/60;
 			long segundos = (tempoTotal/1000)%60;

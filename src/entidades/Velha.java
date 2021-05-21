@@ -4,7 +4,7 @@ public class Velha {
 	
 	private String[][] jogo = {{"1", "2", "3"}, {"4", "5", "6"}, {"7", "8", "9"}};
 	
-	public void Mostrar() {
+	public void mostrar() {
 		System.out.println("=============");
 		System.out.println("JOGO DA VELHA");
 		System.out.println("+---+---+---+");
@@ -16,7 +16,7 @@ public class Velha {
 		}
 	}
 	
-	public void MudarPosicao(String posicao, String jogador) {
+	public void mudarPosicao(String posicao, String jogador) {
 		if (posicao.equals("1")) {
 			jogo[0][0] = jogador;
 		} else if (posicao.equals("2")) {
@@ -38,7 +38,7 @@ public class Velha {
 		}
 	}
 	
-	public String TrocarJogador(int jogadas) {
+	public String trocarJogador(int jogadas) {
 		String jogador;
 		if (jogadas%2 == 0) {
 			jogador = "X";
@@ -48,7 +48,7 @@ public class Velha {
 		return jogador;
 	}
 	
-	public boolean VerificarPosicao(String posicao) {
+	public boolean verificarPosicao(String posicao) {
 		for (int i=0; i<3; i++) {
 			for (int j=0; j<3; j++) {
 				if (jogo[i][j].equals(posicao)) {
@@ -59,7 +59,7 @@ public class Velha {
 		return true;
 	}
 	
-	public String VerificarGanhador(int jogadas) {
+	public String verificarGanhador(int jogadas) {
 		String[] vet = new String[8];
 		String vencedor = null;
 		
